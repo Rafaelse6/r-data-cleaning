@@ -83,7 +83,7 @@ summary(data$Idade)
 #out of domain, numerical = weird idades
 data[data$Idade < 0 | data$Idade > 110,]$Idade
 #checking NAS
-data[is.nada(data$Idade),]
+data[is.na(data$Idade),]
 #option, filling with median
 median(data$Idade)
 #substitution
@@ -91,5 +91,48 @@ data[data$Idade < 0 | data$Idade > 110 ,]$Idade = median(data$Idade)
 #weird idades
 data[data$Idade < 0 | data$Idade > 110 ,]
 summary(data$Idade)
+```
+Duplicated Data
+```{r}
+#searching duplicated data by id
+x = data[duplicated(data$Id),]
+x
+#ID 81 is duplicated
+data = data[-c(82),]
+#searching duplicated line
+data[data$Id == x$Id,]
+#checking duplicated data once more
+x = data[duplicated(data$Id),]
+x
+```
+Estado out of domain
+```{r}
+# out of domain - categorical
+unique(data$Estado)
+summary(data$Estado)
+#model, RS
+data[!data$Estado %in% c("RS", "SC", "PR"),]$Estado = "RS"
+summary(data$Estado)
+#deleting non used factors
+data$Estado = factor(data$Estado)
+#checking
+summary(data$Estado)
+```
+Outliers
+```{r}
+#outliers, creating a parameter with standard deviation
+desv = sd(data$Salario, na.rm = T)
+desv
+data[data$Salario >= 2 * desv ,]$Salario
+#Another way without NAS
+boxplot(data$Salario)
+boxplot(data$Salario, outline = F)
+x = boxplot(data$Salario)$out
+x
+#updating all to median
+median(data$Salario)
+data[data$Salario >= 2 * desv ,]$Salario = median(data$Salario)
+#checking outliers
+data[data$Salario >= 2 * desv , ]$Salario
 ```
 
