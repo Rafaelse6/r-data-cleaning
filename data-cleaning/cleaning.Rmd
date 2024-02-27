@@ -46,4 +46,50 @@ summary(data$Salario)
 boxplot(data$Salario)
 boxplot(data$Salario, outline = F)
 ```
+Missing Values - NAS
+```{r}
+#NAS
+data[!complete.cases(data),]
+```
+Salarios
+```{r}
+#organizing salarios
+summary(data$Salario)
+#median
+median(data$Salario, na.rm = T)
+#NAS with median
+data[is.na(data$Salario),]$Salario = median(data$Salario, na.rm=T)
+#checking NAS in salario
+data[!complete.cases(data$Salario),]
+```
+Missing pattern in Genero
+```{r}
+#Values
+unique(data$Genero)
+summary(data$Genero)
+# F and Fem -> Feminino/ "", M -> Masculino
+data[is.na(data$Genero) | data$Genero == "M",]$Genero = "Masculino"
+data[data$Genero == "F" | data $Genero == "Fem",]$Genero = "Feminino"
+#Result
+summary(data$Genero)
+#removing unused levels
+data$Genero = factor(data$Genero)
+# check
+summary(data$Genero)
+```
+Idade out of domain
+```{r}
+summary(data$Idade)
+#out of domain, numerical = weird idades
+data[data$Idade < 0 | data$Idade > 110,]$Idade
+#checking NAS
+data[is.nada(data$Idade),]
+#option, filling with median
+median(data$Idade)
+#substitution
+data[data$Idade < 0 | data$Idade > 110 ,]$Idade = median(data$Idade)
+#weird idades
+data[data$Idade < 0 | data$Idade > 110 ,]
+summary(data$Idade)
+```
 
