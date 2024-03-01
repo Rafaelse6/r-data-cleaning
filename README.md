@@ -1,0 +1,13 @@
+<h1> Data Cleaning in R </h1>
+
+> Status: completed ✔️
+### Data cleaning in R.
+## Technologies used:
+
+<table>
+  <tr>
+    <td>R</td>
+    <td>RSutdio</td>
+    <td>Excel</td>
+  </tr>
+</table>
