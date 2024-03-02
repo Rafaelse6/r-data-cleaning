@@ -1,4 +1,4 @@
-<h1> Data Cleaning in R </h1>
+<h1> Data Cleaning in R - Churn.csv</h1>
 
 > Status: completed ✔️
 ### Data cleaning in R.
@@ -7,7 +7,7 @@
 <table>
   <tr>
     <td>R</td>
-    <td>RSutdio</td>
+    <td>RStudiodio</td>
     <td>Excel</td>
   </tr>
 </table>
