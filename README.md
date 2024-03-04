@@ -7,7 +7,7 @@
 <table>
   <tr>
     <td>R</td>
-    <td>RStudiodio</td>
+    <td>RStudio</td>
     <td>Excel</td>
   </tr>
 </table>
